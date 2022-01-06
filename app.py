@@ -125,27 +125,36 @@ def predict():
     pre = PreprocessingSteamReviews(df)
     df_pre = pre.df_reviews
 
-    data = vectorizer.transform(df_pre['review'])
-    data_t = get_features.transform(data)
+    if df_pre.shape[0] == 0:
+        content = {"prediction_text": "BŁĄD",
+                    "important_words": [],
+                    "text": [],
+                    "preproccesed_text": []}
+    else:
+
+        data = vectorizer.transform(df_pre['review'])
+        data_t = get_features.transform(data)
 
 
-    tmp = get_features.get_feature_names_out()
-    words = []
+        tmp = get_features.get_feature_names_out()
+        words = []
 
-    # print(type(data_t.nonzero()[1]))
+        # print(type(data_t.nonzero()[1]))
 
-    for i in data_t.nonzero()[1]:
-       words.append([tmp[i], data_t.toarray()[0][i]])
-    # print(words)
+        for i in data_t.nonzero()[1]:
+            words.append([tmp[i], data_t.toarray()[0][i]])
+        # print(words)
 
-    data_t = pd.DataFrame(data_t.toarray(), columns=tmp)
+        data_t = pd.DataFrame(data_t.toarray(), columns=tmp)
 
-    prediction = model.predict(data_t)
+        prediction = model.predict(data_t)
 
-    output = ["POZYTYWNA" if prediction == True else "NEGATYWNA"]
+        output = ["POZYTYWNA" if prediction == True else "NEGATYWNA"]
 
-    content = {"prediction_text": output[0],
-                "important_words": (sorted(words, key=itemgetter(1), reverse=True))}
+        content = {"prediction_text": output[0],
+                    "important_words": (sorted(words, key=itemgetter(1), reverse=True)),
+                    "text": mess[0],
+                    "preproccesed_text": df['review'][0]}
 
     return render_template('index.html', **content)
 
