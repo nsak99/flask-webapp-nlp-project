@@ -30,20 +30,24 @@
     {% if text %}
 
     <div class="alert alert-primary" role="alert">
-      Recenzja wejściowa
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-      </svg>
-      <span class="badge bg-light text-dark">{{ text }}</span>
+      <h6>Recenzja wejściowa</h6>
+      <div class="card">
+        <div class="card-body" style="color:black">
+          {{ text }}
+        </div>
+      </div>
       
-      <br><br>
-      Recenzja po preprocessingu
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-      </svg>
-      <span class="badge bg-light text-dark">{{ preproccesed_text }}</span>
-      
-      <br><br>
+      <br>
+
+      <h6>Recenzja po preprocessingu</h6>
+      <div class="card">
+        <div class="card-body" style="color:black">
+          {{ preproccesed_text }}
+        </div>
+      </div>
+
+      <br>
+
       <h4>
       Wynik predykcji 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
