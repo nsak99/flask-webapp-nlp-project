@@ -109,9 +109,9 @@ class PreprocessingSteamReviews():
 
 
 app = Flask(__name__)
-model = pickle.load(open(r"D:\\etrapez\\Praca_Inzynierska\\Project\\best_model.joblib", 'rb'))
-vectorizer = pickle.load(open(r"D:\\etrapez\\Praca_Inzynierska\\Project\\vectorizer.joblib", 'rb'))
-get_features = pickle.load(open(r"D:\\etrapez\\Praca_Inzynierska\\Project\\get_features.joblib", 'rb'))
+model = pickle.load(open("best_model.joblib", 'rb'))
+vectorizer = pickle.load(open("vectorizer.joblib", 'rb'))
+get_features = pickle.load(open("get_features.joblib", 'rb'))
 
 @app.route('/')
 def home():
