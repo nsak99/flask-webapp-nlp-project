@@ -152,7 +152,7 @@ def predict():
         output = ["POZYTYWNA" if prediction == True else "NEGATYWNA"]
 
         content = {"prediction_text": output[0],
-                    "important_words": (sorted(words, key=itemgetter(1), reverse=True)),
+                    "important_words": (sorted(words, key=itemgetter(1), reverse=True)[:10]),
                     "text": mess[0],
                     "preproccesed_text": df['review'][0]}
 
